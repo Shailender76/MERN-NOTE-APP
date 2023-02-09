@@ -18,7 +18,7 @@ const Navbar = () => {
     if(e.target.value===""){
 allNotes();
     }else{
-      doSearch(e.target.value)
+      doSearch(e.target.value);
 
     }
   }
