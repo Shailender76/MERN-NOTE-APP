@@ -5,7 +5,8 @@ import NoteItem from './NoteItem';
 
 const MyNotes = () => {
   const context = useContext(noteContext);
-  const navigate=useNavigate();
+  
+  const navigate = useNavigate();
   const openModal = useRef(null);
   const closeModal = useRef(null);
   const { notes, allNotes, updateNote } = context;
@@ -26,18 +27,19 @@ const MyNotes = () => {
     closeModal.current.click();
   }
   useEffect(() => {
-    if(localStorage.getItem("token")){
+    if (localStorage.getItem("token")) {
       allNotes()
 
-    }else{
+    } else {
       navigate("/signup")
     }
   }, [])
   return (
     <div className='container my-3'>
       <h1>Your Notes</h1>
+
       <div className="row">
-        {notes.map((note, i) => {
+        {notes.length === 0 ? <h1 style={{ textAlign: "center" }} >No Data Found</h1> : notes.map((note, i) => {
           return <NoteItem updation={updation} key={i} index={i} note={note} />
         })}
       </div>
